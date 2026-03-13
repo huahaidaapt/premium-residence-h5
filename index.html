@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Residence - 高端公寓看房</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <nav class="language-nav">
+        <button class="lang-btn active" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="th">ไทย</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title" data-i18n="hero.title">Premium Residence</h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">您的理想居住空间 · Your Ideal Living Space · พื้นที่อยู่อาศัยที่สมบูรณ์แบบของคุณ</p>
+                <div class="hero-features">
+                    <span data-i18n="hero.feature1">核心地段</span>
+                    <span>•</span>
+                    <span data-i18n="hero.feature2">精装品质</span>
+                    <span>•</span>
+                    <span data-i18n="hero.feature3">24h安保</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-item active" data-filter="all" data-i18n="filter.all">全部房源</div>
+            <div class="filter-item" data-filter="studio" data-i18n="filter.studio">开间</div>
+            <div class="filter-item" data-filter="1bedroom" data-i18n="filter.1bedroom">一居室</div>
+            <div class="filter-item" data-filter="2bedroom" data-i18n="filter.2bedroom">两居室</div>
+        </div>
+    </section>
+
+    <!-- Apartment List -->
+    <section class="apartments-section">
+        <div class="section-header">
+            <h2 data-i18n="section.title">精选房源</h2>
+            <p data-i18n="section.subtitle">为您精心挑选的理想住所</p>
+        </div>
+        <div class="apartments-grid" id="apartmentsGrid">
+            <!-- Apartments will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <div class="contact-cta">
+        <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="contact-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span data-i18n="contact.whatsapp">WhatsApp咨询</span>
+        </a>
+        <a href="tel:YOUR_PHONE_NUMBER" class="contact-btn phone">
+            <i class="fas fa-phone"></i>
+            <span data-i18n="contact.phone">电话预约</span>
+        </a>
+    </div>
+
+    <!-- Apartment Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" data-i18n="modal.details">房源详情</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content loaded dynamically -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="modal-cta whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="modal.bookNow">立即预约看房</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

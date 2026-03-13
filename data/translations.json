@@ -1,0 +1,126 @@
+{
+  "translations": {
+    "hero": {
+      "title": {
+        "zh": "Premium Residence",
+        "en": "Premium Residence",
+        "th": "Premium Residence"
+      },
+      "subtitle": {
+        "zh": "您的理想居住空间",
+        "en": "Your Ideal Living Space",
+        "th": "พื้นที่อยู่อาศัยที่สมบูรณ์แบบของคุณ"
+      },
+      "feature1": {
+        "zh": "核心地段",
+        "en": "Prime Location",
+        "th": "ทำเลทอง"
+      },
+      "feature2": {
+        "zh": "精装品质",
+        "en": "Premium Quality",
+        "th": "คุณภาพสูง"
+      },
+      "feature3": {
+        "zh": "24h安保",
+        "en": "24h Security",
+        "th": "รักษาความปลอดภัย 24 ชม."
+      }
+    },
+    "filter": {
+      "all": {
+        "zh": "全部房源",
+        "en": "All Units",
+        "th": "ทุกห้อง"
+      },
+      "studio": {
+        "zh": "开间",
+        "en": "Studio",
+        "th": "สตูดิโอ"
+      },
+      "1bedroom": {
+        "zh": "一居室",
+        "en": "1 Bedroom",
+        "th": "1 ห้องนอน"
+      },
+      "2bedroom": {
+        "zh": "两居室",
+        "en": "2 Bedrooms",
+        "th": "2 ห้องนอน"
+      }
+    },
+    "section": {
+      "title": {
+        "zh": "精选房源",
+        "en": "Featured Units",
+        "th": "ห้องที่แนะนำ"
+      },
+      "subtitle": {
+        "zh": "为您精心挑选的理想住所",
+        "en": "Carefully selected ideal living spaces",
+        "th": "พื้นที่อยู่อาศัยที่เหมาะสมที่คัดสรรมาอย่างดี"
+      }
+    },
+    "contact": {
+      "whatsapp": {
+        "zh": "WhatsApp咨询",
+        "en": "WhatsApp Us",
+        "th": "ติดต่อ WhatsApp"
+      },
+      "phone": {
+        "zh": "电话预约",
+        "en": "Call to Book",
+        "th": "โทรจอง"
+      }
+    },
+    "modal": {
+      "details": {
+        "zh": "房源详情",
+        "en": "Unit Details",
+        "th": "รายละเอียดห้อง"
+      },
+      "bookNow": {
+        "zh": "立即预约看房",
+        "en": "Book Viewing Now",
+        "th": "จองดูห้องทันที"
+      },
+      "area": {
+        "zh": "面积",
+        "en": "Area",
+        "th": "พื้นที่"
+      },
+      "floor": {
+        "zh": "楼层",
+        "en": "Floor",
+        "th": "ชั้น"
+      },
+      "deposit": {
+        "zh": "押金政策",
+        "en": "Deposit Policy",
+        "th": "เงินมัดจำ"
+      },
+      "features": {
+        "zh": "房屋配置",
+        "en": "Features",
+        "th": "จุดเด่น"
+      }
+    },
+    "types": {
+      "studio": {
+        "zh": "开间",
+        "en": "Studio",
+        "th": "สตูดิโอ"
+      },
+      "1bedroom": {
+        "zh": "一居室",
+        "en": "1 Bedroom",
+        "th": "1 ห้องนอน"
+      },
+      "2bedroom": {
+        "zh": "两居室",
+        "en": "2 Bedrooms",
+        "th": "2 ห้องนอน"
+      }
+    }
+  }
+}
