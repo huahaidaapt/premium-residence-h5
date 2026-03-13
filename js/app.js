@@ -164,11 +164,11 @@ function createApartmentCard(apt) {
                     loading="${LAZY_LOADING.enabled ? 'lazy' : 'eager'}"
                     onerror="this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
                 >
-                <span class="card-badge">${typeLabel}</span>
+<span class="card-badge">${apt.id}</span>
             </div>
             <div class="card-content">
                 <div class="card-type">${typeLabel}</div>
-                <h3 class="card-title">${getTranslation('types.' + apt.type) || typeLabel} ${apt.id}</h3>
+<h3 class="card-title">${apt.id}</h3>
                 <div class="card-info">
                     <span class="info-item">
                         <i class="fas fa-ruler-combined"></i>
