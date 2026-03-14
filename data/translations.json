@@ -62,11 +62,11 @@
       }
     },
     "contact": {
-      "whatsapp": {
-        "zh": "WhatsApp咨询",
-        "en": "WhatsApp Us",
-        "th": "ติดต่อ WhatsApp"
-      },
+"whatsapp": {
+  "zh": "微信咨询",
+  "en": "WeChat",
+  "th": "WeChat"
+},
       "phone": {
         "zh": "电话预约",
         "en": "Call to Book",
