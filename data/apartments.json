@@ -1,7 +1,12 @@
 {
   "apartments": [
     {
-      "id": "A22",
+      "id": "22",
+      "displayName": {
+        "zh": "22号房",
+        "en": "Room 22",
+        "th": "ห้อง 22"
+      },
       "type": "studio",
       "area": "24.62㎡",
       "floor": {
@@ -35,7 +40,12 @@
       ]
     },
     {
-      "id": "A02",
+      "id": "02",
+      "displayName": {
+        "zh": "02号房",
+        "en": "Room 02",
+        "th": "ห้อง 02"
+      },
       "type": "studio",
       "area": "27.5㎡",
       "floor": {
@@ -69,7 +79,12 @@
       ]
     },
     {
-      "id": "A05",
+      "id": "05",
+      "displayName": {
+        "zh": "05号房",
+        "en": "Room 05",
+        "th": "ห้อง 05"
+      },
       "type": "studio",
       "area": "28.2㎡",
       "floor": {
@@ -103,7 +118,12 @@
       ]
     },
     {
-      "id": "A19",
+      "id": "19",
+      "displayName": {
+        "zh": "19号房",
+        "en": "Room 19",
+        "th": "ห้อง 19"
+      },
       "type": "studio",
       "area": "30㎡",
       "floor": {
@@ -137,7 +157,12 @@
       ]
     },
     {
-      "id": "A12",
+      "id": "12",
+      "displayName": {
+        "zh": "12号房",
+        "en": "Room 12",
+        "th": "ห้อง 12"
+      },
       "type": "studio",
       "area": "31.75㎡",
       "floor": {
