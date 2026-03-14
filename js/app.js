@@ -154,6 +154,14 @@ function createApartmentCard(apt) {
     const typeLabel = APARTMENT_TYPES[apt.type]?.[currentLang] || apt.type;
     const priceText = apt.price[currentLang] || apt.price.zh;
     const mainImage = apt.images[0] || 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+
+        // 获取房号显示名称（中英泰三语）/ Get room number display name with trilingual support
+    let roomNumberDisplay;
+    if (apt.displayName && typeof apt.displayName === 'object') {
+        roomNumberDisplay = apt.displayName[currentLang] || apt.displayName.zh || apt.displayName.en || apt.displayName.th || apt.id;
+    } else {
+        roomNumberDisplay = apt.id;
+    }
     
     // 安全地获取楼层信息（中英泰三语）/ Safely get floor info with trilingual support
     let floorText;
@@ -184,10 +192,10 @@ function createApartmentCard(apt) {
                     loading="${LAZY_LOADING.enabled ? 'lazy' : 'eager'}"
                     onerror="this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
                 >
-                <span class="card-badge">${apt.id}</span>
+               <span class="card-badge">${roomNumberDisplay}</span>
             </div>
             <div class="card-content">
-                <h3 class="card-title">${apt.id}</h3>
+               <h3 class="card-badge">${roomNumberDisplay}</h3>
                 <div class="card-info">
                     <span class="info-item">
                         <i class="fas fa-ruler-combined"></i>
