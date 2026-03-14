@@ -1,11 +1,11 @@
 {
   "translations": {
     "hero": {
-      "title": {
-        "zh": "Premium Residence",
-        "en": "Premium Residence",
-        "th": "Premium Residence"
-      },
+     "title": {
+  "zh": "华海达公寓",
+  "en": "Huahaida Apartments",
+  "th": "ฮวาไหต้า อพาร์ตเมนท์"
+},
       "subtitle": {
         "zh": "您的理想居住空间",
         "en": "Your Ideal Living Space",
