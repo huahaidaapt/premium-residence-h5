@@ -303,6 +303,48 @@
     <script src="js/config.js"></script>
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
+
+<!-- Copy WeChat ID Function -->
+<script>
+    function copyWeChatId() {
+        const wechatId = document.getElementById('wechatId')?.textContent || '华海达公寓';
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(wechatId).then(() => {
+                alert('微信号已复制 / WeChat ID copied / ไอดีวีแชทถูกคัดลอก: ' + wechatId);
+            }).catch(err => {
+                console.error('Failed to copy WeChat ID:', err);
+                const textarea = document.createElement('textarea');
+                textarea.value = wechatId;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('微信号已复制 / WeChat ID copied / ไอดีวีแชทถูกคัดลอก: ' + wechatId);
+                } catch (err) {
+                    console.error('Failed to copy:', err);
+                }
+                document.body.removeChild(textarea);
+            });
+        } else {
+            const textarea = document.createElement('textarea');
+            textarea.value = wechatId;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert('微信号已复制 / WeChat ID copied / ไอดีวีแชทถูกคัดลอก: ' + wechatId);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                alert('请手动复制微信号 / Please copy WeChat ID manually / กรุณาคัดลอกไอดีวีแชทด้วยตนเอง: ' + wechatId);
+            }
+            document.body.removeChild(textarea);
+        }
+    }
+</script>
     
     <!-- 添加复制微信号的脚本和样式 -->
     <script>
