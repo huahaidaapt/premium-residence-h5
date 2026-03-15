@@ -54,13 +54,21 @@ function initEventListeners() {
         });
     });
 
-    // 关闭模态框 / Close Modal / ปิดโมดัล
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    document.getElementById('detailModal').addEventListener('click', (e) => {
-        if (e.target.id === 'detailModal') {
-            closeModal();
-        }
-    });
+// 关闭模态框 / Close Modal / ปิดโมดัล
+document.getElementById('closeModal').addEventListener('click', closeModal);
+document.getElementById('detailModal').addEventListener('click', (e) => {
+    if (e.target.id === 'detailModal') {
+        closeModal();
+    }
+});
+
+// 公寓介绍模态框 / Apartment Introduction Modal / โมดัลแนะนำอพาร์ตเมนต์
+const apartmentIntroModal = document.getElementById('apartmentIntroModal');
+apartmentIntroModal.addEventListener('click', (e) => {
+    if (e.target.id === 'apartmentIntroModal') {
+        closeApartmentIntroModal();
+    }
+});
 
     // 键盘事件 / Keyboard Events / เหตุการณ์แป้นพิมพ์
     document.addEventListener('keydown', (e) => {
@@ -353,6 +361,20 @@ function changeMainImage(imageUrl, thumbnail) {
         thumb.classList.remove('active');
     });
     thumbnail.classList.add('active');
+}
+
+// 打开公寓介绍模态框 / Open Apartment Introduction Modal / เปิดโมดัลแนะนำอพาร์ตเมนต์
+function openApartmentIntroModal() {
+    const modal = document.getElementById('apartmentIntroModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// 关闭公寓介绍模态框 / Close Apartment Introduction Modal / ปิดโมดัลแนะนำอพาร์ตเมนต์
+function closeApartmentIntroModal() {
+    const modal = document.getElementById('apartmentIntroModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
 
 // 显示错误信息 / Show Error Message / แสดงข้อความผิดพลาด
