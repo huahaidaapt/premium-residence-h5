@@ -77,13 +77,12 @@
     "en": "Apartment Info",
     "th": "ข้อมูลอพาร์ตเมนต์"
   },
-  "price": {
-    "zh": "租金",
-    "en": "Rent",
-    "th": "ค่าเช่า"
-  }
-}
-    "modal": {
+"price": {
+  "zh": "租金",
+  "en": "Rent",
+  "th": "ค่าเช่า"
+},
+"modal": {
       "details": {
         "zh": "房源详情",
         "en": "Unit Details",
@@ -109,13 +108,13 @@
         "en": "Deposit Policy",
         "th": "เงินมัดจำ"
       },
-      "features": {
-        "zh": "房屋配置",
-        "en": "Features",
-        "th": "จุดเด่น"
-      }
-    },
-    "intro": {
+  "features": {
+    "zh": "房屋配置",
+    "en": "Features",
+    "th": "จุดเด่น"
+  }
+},
+"intro": {
   "title": {
     "zh": "公寓介绍",
     "en": "Apartment Introduction",
