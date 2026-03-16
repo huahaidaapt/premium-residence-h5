@@ -18,23 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 加载数据 / Load Data / โหลดข้อมูล
 function loadData() {
-    console.log('开始加载数据... / Start loading data...');
     Promise.all([
-        fetch('data/apartments.json').then(res => {
-            if (!res.ok) {
-                throw new Error(`Failed to fetch apartments.json: ${res.status} ${res.statusText}`);
-            }
-            return res.json();
-        }),
-        fetch('data/translations.json').then(res => {
-            if (!res.ok) {
-                throw new Error(`Failed to fetch translations.json: ${res.status} ${res.statusText}`);
-            }
-            return res.json();
-        })
+        fetch('data/apartments.json').then(res => res.json()),
+        fetch('data/translations.json').then(res => res.json())
     ])
     .then(([apartments, translations]) => {
-        console.log('数据加载成功！/ Data loaded successfully!', apartments, translations);
         apartmentsData = apartments.apartments;
         translationsData = translations.translations;
         renderApartments();
@@ -42,9 +30,7 @@ function loadData() {
     })
     .catch(error => {
         console.error('Error loading data:', error);
-        showError(`无法加载数据，请稍后重试 / Failed to load data, please try again later / ไม่สามารถโหลดข้อมูลได้ โปรดลองอีกครั้ง
-
-错误信息 / Error message: ${error.message}`);
+        showError('无法加载数据，请稍后重试 / Failed to load data, please try again later / ไม่สามารถโหลดข้อมูลได้ โปรดลองอีกครั้ง');
     });
 }
 
@@ -68,21 +54,13 @@ function initEventListeners() {
         });
     });
 
-// 关闭模态框 / Close Modal / ปิดโมดัล
-document.getElementById('closeModal').addEventListener('click', closeModal);
-document.getElementById('detailModal').addEventListener('click', (e) => {
-    if (e.target.id === 'detailModal') {
-        closeModal();
-    }
-});
-
-// 公寓介绍模态框 / Apartment Introduction Modal / โมดัลแนะนำอพาร์ตเมนต์
-const apartmentIntroModal = document.getElementById('apartmentIntroModal');
-apartmentIntroModal.addEventListener('click', (e) => {
-    if (e.target.id === 'apartmentIntroModal') {
-        closeApartmentIntroModal();
-    }
-});
+    // 关闭模态框 / Close Modal / ปิดโมดัล
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+        if (e.target.id === 'detailModal') {
+            closeModal();
+        }
+    });
 
     // 键盘事件 / Keyboard Events / เหตุการณ์แป้นพิมพ์
     document.addEventListener('keydown', (e) => {
@@ -107,34 +85,16 @@ function switchLanguage(lang) {
 
 // 更新界面语言 / Update UI Language / อัปเดตภาษาอินเทอร์เฟซ
 function updateLanguage() {
-    // 更新带 data-i18n 属性的所有元素
+    // 更新带 data-i18n 属性的所有元素 / Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.dataset.i18n;
         const text = getTranslation(key);
         if (text) {
-            // 检查元素是否是输入框或按钮
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = text;
-            } else {
-                element.textContent = text;
-            }
+            element.textContent = text;
         }
     });
 
-    // 特别处理按钮内部的 span 元素
-    document.querySelectorAll('button[data-i18n], a[data-i18n]').forEach(button => {
-        const key = button.dataset.i18n;
-        const text = getTranslation(key);
-        if (text) {
-            const span = button.querySelector('span');
-            if (span && !span.dataset.i18n) {
-                // 如果 span 没有 data-i18n，说明这是主要的文本元素
-                span.textContent = text;
-            }
-        }
-    });
-
-    // 重新渲染房源卡片以更新价格和配置信息
+    // 重新渲染房源卡片以更新价格和配置信息 / Re-render apartment cards to update prices and features
     renderApartments();
 }
 
@@ -393,20 +353,6 @@ function changeMainImage(imageUrl, thumbnail) {
         thumb.classList.remove('active');
     });
     thumbnail.classList.add('active');
-}
-
-// 打开公寓介绍模态框 / Open Apartment Introduction Modal / เปิดโมดัลแนะนำอพาร์ตเมนต์
-function openApartmentIntroModal() {
-    const modal = document.getElementById('apartmentIntroModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// 关闭公寓介绍模态框 / Close Apartment Introduction Modal / ปิดโมดัลแนะนำอพาร์ตเมนต์
-function closeApartmentIntroModal() {
-    const modal = document.getElementById('apartmentIntroModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
 }
 
 // 显示错误信息 / Show Error Message / แสดงข้อความผิดพลาด
