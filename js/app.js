@@ -1,470 +1,296 @@
-/**
- * Premium Residence - 主应用程序
- * Main Application
- * แอปพลิเคชันหลัก
- */
+// Global variables
+let currentLanguage = 'zh';
+let apartments = [];
+let translations = {};
 
-// 全局状态 / Global State / สถานะทั่วไป
-let currentLang = DEFAULT_LANG;
-let currentFilter = 'all';
-let apartmentsData = [];
-let translationsData = {};
-
-// 初始化应用 / Initialize Application / เริ่มต้นแอปพลิเคชัน
-document.addEventListener('DOMContentLoaded', () => {
-    loadData();
-    initEventListeners();
+// Initialize application
+document.addEventListener('DOMContentLoaded', function() {
+    loadTranslations();
+    loadApartments();
+    initializeLanguageSwitcher();
+    initModalListeners();
+    
+    // Check if page was loaded due to refresh after modal open
+    if (sessionStorage.getItem('introModalOpen')) {
+        openIntroModal();
+        sessionStorage.removeItem('introModalOpen');
+    }
 });
 
-// 加载数据 / Load Data / โหลดข้อมูล
-function loadData() {
-    Promise.all([
-        fetch('data/apartments.json').then(res => res.json()),
-        fetch('data/translations.json').then(res => res.json())
-    ])
-    .then(([apartments, translations]) => {
-        apartmentsData = apartments.apartments;
-        translationsData = translations.translations;
-        renderApartments();
-        updateLanguage();
-    })
-    .catch(error => {
-        console.error('Error loading data:', error);
-        showError('无法加载数据，请稍后重试 / Failed to load data, please try again later / ไม่สามารถโหลดข้อมูลได้ โปรดลองอีกครั้ง');
-    });
+// Load translations
+function loadTranslations() {
+    fetch('data/translations.json')
+        .then(response => response.json())
+        .then(data => {
+            translations = data;
+            updateLanguage();
+        })
+        .catch(error => {
+            console.error('Error loading translations:', error);
+        });
 }
 
-// 初始化事件监听器 / Initialize Event Listeners / เริ่มต้นตัวฟังเหตุการณ์
-function initEventListeners() {
-    // 语言切换 / Language Switcher / ตัวสลับภาษา
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const lang = e.target.dataset.lang;
-            if (AVAILABLE_LANGUAGES.includes(lang)) {
-                switchLanguage(lang);
-            }
+// Load apartments data
+function loadApartments() {
+    fetch('data/apartments.json')
+        .then(response => response.json())
+        .then(data => {
+            apartments = data;
+            renderApartments(apartments);
+        })
+        .catch(error => {
+            console.error('Error loading apartments:', error);
         });
-    });
-
-    // 筛选器 / Filter / ตัวกรอง
-    document.querySelectorAll('.filter-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            const filter = e.target.dataset.filter;
-            applyFilter(filter);
-        });
-    });
-
-    // 关闭模态框 / Close Modal / ปิดโมดัล
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    document.getElementById('detailModal').addEventListener('click', (e) => {
-        if (e.target.id === 'detailModal') {
-            closeModal();
-        }
-    });
-
-    // 键盘事件 / Keyboard Events / เหตุการณ์แป้นพิมพ์
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
-    });
 }
 
-// 切换语言 / Switch Language / เปลี่ยนภาษา
-function switchLanguage(lang) {
-    currentLang = lang;
+// Render apartments grid
+function renderApartments(apartments) {
+    const grid = document.getElementById('apartmentsGrid');
+    grid.innerHTML = '';
 
-    // 更新按钮状态 / Update button states / อัปเดตสถานะปุ่ม
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+    apartments.forEach((apartment, index) => {
+        const card = document.createElement('div');
+        card.className = 'apartment-card';
+        card.style.animationDelay = `${index * 0.05}s`;
+        card.onclick = () => openApartmentModal(apartment);
+
+        card.innerHTML = `
+            <div class="card-image">
+                <img src="${apartment.imageUrl}" alt="${apartment.type} ${apartment.number}">
+                <div class="card-badge">${apartment.number}</div>
+            </div>
+            <div class="card-content">
+                <div class="card-type" data-i18n="apartment.type${apartment.type === 'studio' ? 1 : 2}">${apartment.type === 'studio' ? '开间' : '一居室'}</div>
+                <div class="card-number">${apartment.number}</div>
+                <div class="card-info">
+                    <span><i class="fas fa-ruler-combined"></i> ${apartment.area}㎡</span>
+                    <span><i class="fas fa-home"></i> ${apartment.floor}F ${apartment.direction}</span>
+                </div>
+                <div class="card-price">
+                    <div class="card-price-label" data-i18n="apartment.price">价格</div>
+                    <div class="card-price-value">${apartment.price} ${getCurrencySymbol()}</div>
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(card);
     });
 
-    // 更新界面文本 / Update UI text / อัปเดตข้อความอินเทอร์เฟซ
+    // Update all text elements with translations
     updateLanguage();
 }
 
-// 更新界面语言 / Update UI Language / อัปเดตภาษาอินเทอร์เฟซ
+// Initialize language switcher
+function initializeLanguageSwitcher() {
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelector('.lang-btn.active').classList.remove('active');
+            this.classList.add('active');
+            currentLanguage = this.dataset.lang;
+            updateLanguage();
+        });
+    });
+}
+
+// Update page language
 function updateLanguage() {
-    // 更新带 data-i18n 属性的所有元素 / Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
         const key = element.dataset.i18n;
-        const text = getTranslation(key);
-        if (text) {
-            element.textContent = text;
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
         }
     });
 
-    // 重新渲染房源卡片以更新价格和配置信息 / Re-render apartment cards to update prices and features
-    renderApartments();
+    // Update all apartment cards
+    renderApartments(apartments);
 }
 
-// 获取翻译文本 / Get Translation Text / รับข้อความแปล
-function getTranslation(key) {
-    const keys = key.split('.');
-    let value = translationsData;
-
-    for (const k of keys) {
-        if (value && value[k]) {
-            value = value[k];
-        } else {
-            return null;
-        }
-    }
-
-    return value && value[currentLang] ? value[currentLang] : value;
+// Get currency symbol based on language
+function getCurrencySymbol() {
+    return currentLanguage === 'zh' ? '元/月' : currentLanguage === 'en' ? '¥/month' : 'บาท/เดือน';
 }
 
-// 应用筛选 / Apply Filter / ใช้ตัวกรอง
-function applyFilter(filter) {
-    currentFilter = filter;
-
-    // 更新筛选器状态 / Update filter states / อัปเดตสถานะตัวกรอง
-    document.querySelectorAll('.filter-item').forEach(item => {
-        item.classList.toggle('active', item.dataset.filter === filter);
-    });
-
-    // 重新渲染房源 / Re-render apartments / แสดงห้องใหม่
-    renderApartments();
-}
-
-// 渲染房源列表 / Render Apartment List / แสดงรายการห้อง
-function renderApartments() {
-    const grid = document.getElementById('apartmentsGrid');
-    
-    // 筛选房源 / Filter apartments / กรองห้อง
-    const filteredApartments = currentFilter === 'all' 
-        ? apartmentsData 
-        : apartmentsData.filter(apt => apt.type === currentFilter);
-
-    if (filteredApartments.length === 0) {
-        grid.innerHTML = `
-            <div class="no-results">
-                <p data-i18n="noResults">暂无符合条件房源 / No units found / ไม่พบห้องที่ตรงกัน</p>
-            </div>
-        `;
-        return;
-    }
-
-    // 生成房源卡片 / Generate apartment cards / สร้างการ์ดห้อง
-    grid.innerHTML = filteredApartments.map(apt => createApartmentCard(apt)).join('');
-}
-
-// 创建房源卡片 HTML / Create Apartment Card HTML / สร้าง HTML การ์ดห้อง
-function createApartmentCard(apt) {
-    const typeLabel = APARTMENT_TYPES[apt.type]?.[currentLang] || apt.type;
-    const priceText = apt.price[currentLang] || apt.price.zh;
-    const mainImage = apt.images[0] || 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-
-        // 获取房号显示名称（中英泰三语）/ Get room number display name with trilingual support
-    let roomNumberDisplay;
-    if (apt.displayName && typeof apt.displayName === 'object') {
-        roomNumberDisplay = apt.displayName[currentLang] || apt.displayName.zh || apt.displayName.en || apt.displayName.th || apt.id;
-    } else {
-        roomNumberDisplay = apt.id;
-    }
-    
-    // 安全地获取楼层信息（中英泰三语）/ Safely get floor info with trilingual support
-    let floorText;
-    if (typeof apt.floor === 'object' && apt.floor !== null) {
-        // 如果是对象，根据当前语言获取值
-        if (currentLang && apt.floor[currentLang] && typeof apt.floor[currentLang] === 'string') {
-            floorText = apt.floor[currentLang];
-        } else if (apt.floor.zh && typeof apt.floor.zh === 'string') {
-            floorText = apt.floor.zh;
-        } else {
-            // 如果没有有效的字符串值，使用默认值
-            floorText = apt.floor.zh || apt.floor.en || apt.floor.th || '';
-        }
-    } else if (typeof apt.floor === 'string') {
-        // 如果是字符串，直接使用
-        floorText = apt.floor;
-    } else {
-        // 其他情况，使用空字符串
-        floorText = '';
-    }
-
-    return `
-        <div class="apartment-card" data-id="${apt.id}" onclick="openModal('${apt.id}')">
-            <div class="card-image">
-                <img
-                    src="${mainImage}"
-                    alt="Apartment ${roomNumberDisplay}"
-                    loading="${LAZY_LOADING.enabled ? 'lazy' : 'eager'}"
-                    onerror="this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
-                >
-                <span class="card-badge">${roomNumberDisplay}</span>
-            </div>
-            <div class="card-content">
-                <div class="card-room-number">${roomNumberDisplay}</div>
-                <h3 class="card-title">${typeLabel}</h3>
-                <div class="card-info">
-                    <span class="info-item">
-                        <i class="fas fa-ruler-combined"></i>
-                        ${apt.area}
-                    </span>
-                    <span class="info-item">
-                        <i class="fas fa-building"></i>
-                        ${floorText}
-                    </span>
-                </div>
-                <div class="card-price">
-                    <span class="price-label" data-i18n="contact.price">${getTranslation('contact.price') || 'Price'}</span>
-                    <span class="price-value">${priceText}</span>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// 打开模态框 / Open Modal / เปิดโมดัล
-function openModal(apartmentId) {
-    const apt = apartmentsData.find(a => a.id === apartmentId);
-    if (!apt) return;
-
+// Open apartment detail modal
+function openApartmentModal(apartment) {
     const modal = document.getElementById('detailModal');
     const modalBody = document.getElementById('modalBody');
-
-    // 安全地获取楼层信息（中英泰三语）/ Safely get floor info with trilingual support
-    let floorText;
-    if (typeof apt.floor === 'object' && apt.floor !== null) {
-        // 如果是对象，根据当前语言获取值
-        if (currentLang && apt.floor[currentLang] && typeof apt.floor[currentLang] === 'string') {
-            floorText = apt.floor[currentLang];
-        } else if (apt.floor.zh && typeof apt.floor.zh === 'string') {
-            floorText = apt.floor.zh;
-        } else {
-            // 如果没有有效的字符串值，使用默认值
-            floorText = apt.floor.zh || apt.floor.en || apt.floor.th || '';
-        }
-    } else if (typeof apt.floor === 'string') {
-        // 如果是字符串，直接使用
-        floorText = apt.floor;
-    } else {
-        // 其他情况，使用空字符串
-        floorText = '';
-    }
-
-    // 生成模态框内容 / Generate modal content / สร้างเนื้อหาโมดัล
-    const featuresList = (apt.features[currentLang] || apt.features.zh).map(feature => `
-        <div class="feature-item">
-            <i class="fas fa-check-circle"></i>
-            <span>${feature}</span>
-        </div>
-    `).join('');
-
-    // 添加楼层信息（中英泰三语）/ Add floor info with trilingual support
-    let floorInfoText = '';
-    if (apt.floorInfo && typeof apt.floorInfo === 'object' && apt.floorInfo !== null) {
-        if (currentLang && apt.floorInfo[currentLang] && typeof apt.floorInfo[currentLang] === 'string') {
-            floorInfoText = apt.floorInfo[currentLang];
-        } else if (apt.floorInfo.zh && typeof apt.floorInfo.zh === 'string') {
-            floorInfoText = apt.floorInfo.zh;
-        } else {
-            floorInfoText = apt.floorInfo.zh || apt.floorInfo.en || apt.floorInfo.th || '';
-        }
-    } else if (apt.floorInfo && typeof apt.floorInfo === 'string') {
-        floorInfoText = apt.floorInfo;
-    }
-
-    const depositText = apt.deposit[currentLang] || apt.deposit.zh;
-
+    
     modalBody.innerHTML = `
-        <div class="modal-image-gallery">
-            <div class="modal-main-image">
-                <img
-                    src="${apt.images[0]}"
-                    alt="Apartment ${apt.id}"
-                    id="mainImage"
-                    onerror="this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
-                >
-            </div>
-            ${apt.images.length > 1 ? `
-                <div class="modal-thumbnails">
-                    ${apt.images.map((img, index) => `
-                        <div class="modal-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">
-                            <img src="${img}" alt="Thumbnail ${index + 1}">
-                        </div>
-                    `).join('')}
-                </div>
-            ` : ''}
+        <div class="detail-image">
+            <img src="${apartment.imageUrl}" alt="${apartment.type} ${apartment.number}">
         </div>
-
-        <div class="modal-info">
-            <div class="info-group">
-                <div class="info-label" data-i18n="modal.area">${getTranslation('modal.area') || 'Area'}</div>
-                <div class="info-value">${apt.area}</div>
+        <div class="detail-info">
+            <div class="detail-item">
+                <div class="detail-label" data-i18n="modal.type">类型</div>
+                <div class="detail-value">${apartment.type === 'studio' ? translations[currentLanguage]['apartment.type1'] : translations[currentLanguage]['apartment.type2']}</div>
             </div>
-            <div class="info-group">
-                <div class="info-label" data-i18n="modal.floor">${getTranslation('modal.floor') || 'Floor'}</div>
-                <div class="info-value">${floorText}</div>
+            <div class="detail-item">
+                <div class="detail-label" data-i18n="modal.number">房号</div>
+                <div class="detail-value">${apartment.number}</div>
             </div>
-            <div class="info-group">
-                <div class="info-label" data-i18n="modal.deposit">${getTranslation('modal.deposit') || 'Deposit'}</div>
-                <div class="info-value">${depositText}</div>
+            <div class="detail-item">
+                <div class="detail-label" data-i18n="modal.area">面积</div>
+                <div class="detail-value">${apartment.area}㎡</div>
             </div>
-            <div class="info-group">
-                <div class="info-label" data-i18n="contact.price">${getTranslation('contact.price') || 'Price'}</div>
-                <div class="info-value">${apt.price[currentLang] || apt.price.zh}</div>
+            <div class="detail-item">
+                <div class="detail-label" data-i18n="modal.floor">楼层</div>
+                <div class="detail-value">${apartment.floor}F ${apartment.direction}</div>
             </div>
-        </div>
-
-        <div class="modal-features">
-            <h4 class="features-title" data-i18n="modal.features">${getTranslation('modal.features') || 'Features'}</h4>
-            <div class="features-list">
-                ${featuresList}
-                ${floorInfoText ? `
-                    <div class="feature-item floor-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>${floorInfoText}</span>
-                    </div>
-                ` : ''}
+            <div class="detail-price">
+                <div class="detail-label" data-i18n="modal.price">价格</div>
+                <div class="detail-price-value">${apartment.price} ${getCurrencySymbol()}</div>
             </div>
         </div>
     `;
 
-    // 更新联系链接 / Update contact links / อัปเดตลิงก์การติดต่อ
-    const whatsappBtn = document.querySelector('.modal-footer .modal-cta');
-    if (whatsappBtn) {
-        const message = encodeURIComponent(`Hi, I'm interested in viewing apartment ${apt.id}. / 您好，我想看房 ${apt.id} / สวัสดี ฉันสนใจดูห้อง ${apt.id}`);
-        whatsappBtn.href = `https://wa.me/${CONTACT_INFO.whatsapp}?text=${message}`;
-    }
-
-    // 显示模态框 / Show modal / แสดงโมดัล
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-// 关闭模态框 / Close Modal / ปิดโมดัล
-function closeModal() {
-    const modal = document.getElementById('detailModal');
+// Open apartment introduction modal
+function openIntroModal() {
+    const modal = document.getElementById('introModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Store modal open state in case of refresh
+    sessionStorage.setItem('introModalOpen', 'true');
+}
+
+// Close apartment introduction modal
+function closeIntroModal() {
+    const modal = document.getElementById('introModal');
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+    
+    // Remove modal open state
+    sessionStorage.removeItem('introModalOpen');
 }
 
-// 切换主图 / Change Main Image / เปลี่ยนภาพหลัก
-function changeMainImage(imageUrl, thumbnail) {
-    const mainImage = document.getElementById('mainImage');
-    if (mainImage) {
-        mainImage.src = imageUrl;
-    }
-
-    // 更新缩略图状态 / Update thumbnail states / อัปเดตสถานะภาพย่อ
-    document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
-        thumb.classList.remove('active');
-    });
-    thumbnail.classList.add('active');
-}
-
-// 显示错误信息 / Show Error Message / แสดงข้อความผิดพลาด
-function showError(message) {
-    const grid = document.getElementById('apartmentsGrid');
-    grid.innerHTML = `
-        <div class="error-message">
-            <i class="fas fa-exclamation-circle"></i>
-            <p>${message}</p>
-        </div>
-    `;
-}
-
-
-// 复制微信号到剪贴板 / Copy WeChat ID to Clipboard / คัดลอกไอดีวีแชทไปยังคลิปบอร์ด
-function copyWeChatId() {
-    const wechatId = CONTACT_INFO.wechat;
-    const copiedText = getTranslation('contact.wechatCopied') || 'WeChat ID copied';
-
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(wechatId).then(() => {
-            alert(`${copiedText}: ${wechatId}`);
-        }).catch(err => {
-            console.error('Failed to copy WeChat ID:', err);
-            // Fallback method
-            copyWeChatIdFallback(wechatId, copiedText);
-        });
-    } else {
-        copyWeChatIdFallback(wechatId, copiedText);
-    }
-}
-
-// 复制微信号备用方法 / Copy WeChat ID Fallback Method / วิธีสำรองคัดลอกไอดีวีแชท
-function copyWeChatIdFallback(wechatId, copiedText) {
-    const textarea = document.createElement('textarea');
-    textarea.value = wechatId;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-
-    try {
-        document.execCommand('copy');
-        alert(`${copiedText}: ${wechatId}`);
-    } catch (err) {
-        console.error('Failed to copy:', err);
-        alert(`${wechatId}`);
-    }
-
-    document.body.removeChild(textarea);
-}
-
-// 打开公寓介绍模态框 / Open Apartment Introduction Modal / เปิดโมดัลแนะนำอพาร์ตเมนต์
-function openIntroModal() {
-    const introModal = document.getElementById('introModal');
-    if (introModal) {
-        introModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// 关闭公寓介绍模态框 / Close Apartment Introduction Modal / ปิดโมดัลแนะนำอพาร์ตเมนต์
-function closeIntroModal() {
-    const introModal = document.getElementById('introModal');
-    if (introModal) {
-        introModal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-}
-
-// 初始化模态框事件监听器 / Initialize Modal Event Listeners / เริ่มต้นตัวฟังเหตุการณ์โมดัล
+// Initialize modal listeners
 function initModalListeners() {
-    // Close Detail Modal
-    const closeModalBtn = document.getElementById('closeModal');
-    const detailModal = document.getElementById('detailModal');
+    // Close detail modal when clicking close button
+    document.getElementById('closeModal').addEventListener('click', function() {
+        const modal = document.getElementById('detailModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
 
-    if (closeModalBtn && detailModal) {
-        closeModalBtn.addEventListener('click', () => {
-            detailModal.style.display = 'none';
-            document.body.style.overflow = '';
+    // Close intro modal when clicking close button
+    document.getElementById('closeIntroModal').addEventListener('click', closeIntroModal);
+
+    // Close modals when clicking outside
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            sessionStorage.removeItem('introModalOpen');
+        }
+    });
+
+    // Prevent modal from closing when clicking content
+    document.querySelectorAll('.modal-content').forEach(content => {
+        content.addEventListener('click', function(event) {
+            event.终止Propagation();
         });
-    }
+    });
+}
 
-    // Close Introduction Modal
-    const closeIntroModalBtn = document.getElementById('closeIntroModal');
+// Copy WeChat ID to clipboard
+function copyWeChatId() {
+    const wechatId = 'huahaida888';
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(wechatId)
+            .then(() => {
+                toast.textContent = `${translations[currentLanguage]['contact.copySuccess']} ${wechatId}`;
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 100px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    z-index: 3000;
+                    animation: fadeInOut 2s ease-in-out;
+                `;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            })
+            .catch(err => {
+                console.error('Copy failed:', err);
+                alert(`${translations[currentLanguage]['contact.copyFailed']} ${wechatId}`);
+            });
+    } else {
+        // Fallback for older 浏览器s
+        alert(`${translations[currentLanguage]['contact.copyFailed']} ${wechatId}`);
+    }
+}
+
+// Handle page visibility change
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') {
+        // Refresh data when page becomes visible again
+        loadTranslations();
+        loadApartments();
+    }
+});
+
+// Handle back button press to close modal
+window.addEventListener('popstate', function(event) {
     const introModal = document.getElementById('introModal');
-
-    if (closeIntroModalBtn && introModal) {
-        closeIntroModalBtn.addEventListener('click', closeIntroModal);
+    const detailModal = document.getElementById('detailModal');
+    
+    if (introModal.classList.contains('active')) {
+        closeIntroModal();
+        event.preventDefault();
+    } else if (detailModal.classList.contains('active')) {
+        detailModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        event.preventDefault();
     }
+});
 
-    // Close modals on backdrop click
-    [detailModal, introModal].forEach(modal => {
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }
+// Escape key to close modals
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const introModal = document.getElementById('introModal');
+        const detailModal = document.getElementById('detailModal');
+        
+        if (introModal.classList.contains('active')) {
+            closeIntroModal();
+        } else if (detailModal.classList.contains('active')) {
+            detailModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
             });
         }
     });
-}
+});
 
-// 页面可见性变化时重新加载 / Reload on visibility change / โหลดใหม่เมื่อการมองเห็นหน้าเปลี่ยน
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && apartmentsData.length === 0) {
-        loadData();
+// Add CSS animations for toasts
+const toastStyle = document.createElement('style');
+toastStyle.textContent = `
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+        10%, 90% { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
-});
-
-// 初始化模态框事件监听 / Initialize modal event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    initModalListeners();
-});
+`;
+document.head.appendChild(toastStyle);
