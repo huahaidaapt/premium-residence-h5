@@ -233,6 +233,142 @@
         "en": "2 Bedrooms",
         "th": "2 ห้องนอน"
       }
-    }
+    },
+    "intro": {
+      "title": {
+        "zh": "公寓介绍",
+        "en": "Apartment Introduction",
+        "th": "แนะนำอพาร์ตเมนต์"
+      },
+      "contact": {
+        "zh": "联系方式",
+        "en": "Contact Information",
+        "th": "ข้อมูลการติดต่อ"
+      },
+      "phone": {
+        "zh": "电话",
+        "en": "Phone",
+        "th": "โทรศัพท์"
+      },
+      "wechat": {
+        "zh": "微信",
+        "en": "WeChat",
+        "th": "วีแชท"
+      },
+      "email": {
+        "zh": "邮箱",
+        "en": "Email",
+        "th": "อีเมล"
+      },
+      "address": {
+        "zh": "地址",
+        "en": "Address",
+        "th": "ที่อยู่"
+      },
+      "transportation": {
+        "zh": "交通指南",
+        "en": "Transportation Guide",
+        "th": "แนวทางการเดินทาง"
+      },
+      "metroStations": {
+        "zh": "临近地铁站",
+        "en": "Nearby Metro Stations",
+        "th": "สถานีรถไฟใต้ดินใกล้เคียง"
+      },
+      "brtStations": {
+        "zh": "BRT站",
+        "en": "BRT Stations",
+        "th": "สถานี BRT"
+      },
+      "fromAirport": {
+        "zh": "从机场到达",
+        "en": "From Airport",
+        "th": "จากสนามบิน"
+      },
+      "fromStation": {
+        "zh": "从高铁站到达",
+        "en": "From High-Speed Rail Station",
+        "th": "จากสถานีรถไฟความเร็วสูง"
+      },
+      "shopping": {
+        "zh": "周边配套",
+        "en": "Nearby Facilities",
+        "th": "สิ่งอำนวยความสะดวกใกล้เคียง"
+      },
+      "taiKooHui": {
+        "zh": "大型高端购物中心，含奢侈品、餐饮、娱乐",
+        "en": "Large high-end shopping mall with luxury goods, dining, and entertainment",
+        "th": "ศูนย์การค้าหรูหราขนาดใหญ่ มีสินค้าหรู ร้านอาหาร และความบันเทิง"
+      },
+      "zhengJia": {
+        "zh": "亚洲顶级购物中心，体验式购物",
+        "en": "Top shopping center in Asia, experiential shopping",
+        "th": "ศูนย์การค้าระดับท็อปของเอเชีย ช้อปปิ้งแบบประสบการณ์"
+      },
+      "teemMall": {
+        "zh": "老牌购物地标，品类齐全",
+        "en": "Classic shopping landmark with complete categories",
+        "th": "แลนด์มาร์กช้อปปิ้งเดิม มีสินค้าครบทุกหมวดหมู่"
+      },
+      "onPlaza": {
+        "zh": "时尚购物中心，年轻潮流",
+        "en": "Fashionable shopping center, young and trendy",
+        "th": "ศูนย์การค้าทันสมัย เหมาะสำหรับเยาวชน"
+      },
+      "universities": {
+        "zh": "邻近大学",
+        "en": "Nearby Universities",
+        "th": "มหาวิทยาลัยใกล้เคียง"
+      },
+      "apartmentIntro": {
+        "zh": "公寓介绍",
+        "en": "Apartment Introduction",
+        "th": "แนะนำอพาร์ตเมนต์"
+      },
+      "metroDesc1": {
+        "zh": "岗顶站 A出口 (3号线) - 步行约6分钟",
+        "en": "Gangding Station Exit A (Line 3) - About 6 min walk",
+        "th": "สถานี Gangding ทางออก A (สาย 3) - เดินประมาณ 6 นาที"
+      },
+      "brtDesc1": {
+        "zh": "岗顶站 - 步行约7分钟",
+        "en": "Gangding Station - About 7 min walk",
+        "th": "สถานี Gangding - เดินประมาณ 7 นาที"
+      },
+      "airportDesc1": {
+        "zh": "广州白云国际机场 → 地铁3号线 → 岗顶站",
+        "en": "Guangzhou Baiyun International Airport → Metro Line 3 → Gangding Station",
+        "th": "ท่าอากาศยานนานาชาติไกวโจวไป๋ยุน → รถไฟใต้ดินสาย 3 → สถานี Gangding"
+      },
+      "airportDesc2": {
+        "zh": "车程约60分钟",
+        "en": "About 60 minutes by metro",
+        "th": "ประมาณ 60 นาทีโดยรถไฟใต้ดิน"
+      },
+      "stationDesc1": {
+        "zh": "广州南站 → 地铁2号线转3号线 → 岗顶站",
+        "en": "Guangzhou South Station → Metro Line 2 to Line 3 → Gangding Station",
+        "th": "สถานีใต้ไกวโจว → รถไฟใต้ดินสาย 2 ต่อสาย 3 → สถานี Gangding"
+      },
+      "stationDesc2": {
+        "zh": "车程约45分钟",
+        "en": "About 45 minutes by metro",
+        "th": "ประมาณ 45 นาทีโดยรถไฟใต้ดิน"
+      },
+      "university1": {
+        "zh": "华南师范大学 - 步行约15分钟",
+        "en": "South China Normal University - About 15 min walk",
+        "th": "มหาวิทยาลัยครูจีนใต้ - เดินประมาณ 15 นาที"
+      },
+      "university2": {
+        "zh": "暨南大学 - 步行约13分钟",
+        "en": "Jinan University - About 13 min walk",
+        "th": "มหาวิทยาลัยจินาน - เดินประมาณ 13 นาที"
+      },
+      "university3": {
+        "zh": "华南理工大学 - 步行约25分钟",
+        "en": "South China University of Technology - About 25 min walk",
+        "th": "มหาวิทยาลัยวิทยาศาสตร์และเทคโนโลยีจีนใต้ - เดินประมาณ 25 นาที"
+      }
   }
 }
