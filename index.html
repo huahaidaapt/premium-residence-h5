@@ -50,17 +50,21 @@
         </div>
     </section>
 
-    <!-- Contact CTA -->
-<div class="contact-cta">
-    <button onclick="copyWeChatId()" class="contact-btn wechat">
-        <i class="fab fa-weixin"></i>
-        <span data-i18n="contact.whatsapp">微信咨询</span>
-    </button>
-<a href="tel:+862022365066" class="contact-btn phone">
-    <i class="fas fa-phone"></i>
-    <span data-i18n="contact.phone">电话预约</span>
-</a>
-</div>
+        <!-- Contact CTA -->
+    <div class="contact-cta">
+        <button class="contact-btn apartment-intro" onclick="openIntroModal()">
+            <i class="fas fa-building"></i>
+            <span data-i18n="contact.apartmentIntro">公寓介绍</span>
+        </button>
+        <button class="contact-btn whatsapp" onclick="copyWeChatId()">
+            <i class="fab fa-whatsapp"></i>
+            <span data-i18n="contact.whatsapp">微信咨询</span>
+        </button>
+        <a href="tel:+862022365066" class="contact-btn phone">
+            <i class="fas fa-phone"></i>
+            <span data-i18n="contact.phone">电话预约</span>
+        </a>
+    </div>
 
     <!-- Apartment Detail Modal -->
     <div class="modal" id="detailModal">
@@ -79,6 +83,160 @@
                     <i class="fab fa-whatsapp"></i>
                     <span data-i18n="modal.bookNow">立即预约看房</span>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apartment Introduction Modal -->
+    <div class="modal" id="introModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="intro.title">公寓介绍</h3>
+                <button class="close-btn" id="closeIntroModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body intro-body">
+                <!-- Building Image -->
+                <div class="intro-section">
+                    <div class="intro-image">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=600&fit=crop" alt="公寓大楼">
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="intro-section">
+                    <h4 class="intro-section-title" data-i18n="intro.contact">联系方式</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <div class="contact-label" data-i18n="intro.phone">电话</div>
+                                <div class="contact-value">+86 20 2236 5066</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-weixin"></i>
+                            <div>
+                                <div class="contact-label" data-i18n="intro.wechat">微信</div>
+                                <div class="contact-value">huahaida888</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <div class="contact-label" data-i18n="intro.email">邮箱</div>
+                                <div class="contact-value">hhdapartment@163.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <div class="contact-label" data-i18n="intro.address">地址</div>
+                                <div class="contact-value">广州市天河区龙口东横街28号华海达公寓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transportation Guide -->
+                <div class="intro-section">
+                    <h4 class="intro-section-title" data-i18n="intro.transportation">交通指南</h4>
+                    <div class="transportation-info">
+                        <div class="transport-item">
+                            <div class="transport-icon">
+                                <i class="fas fa-subway"></i>
+                            </div>
+                            <div class="transport-details">
+                                <div class="transport-title" data-i18n="intro.metroStations">临近地铁站</div>
+                                <div class="transport-desc">体育西路站 (1号线、3号线) - 步行约8分钟</div>
+                                <div class="transport-desc">林和西站 (APM线) - 步行约10分钟</div>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <div class="transport-icon">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <div class="transport-details">
+                                <div class="transport-title" data-i18n="intro.brtStations">BRT站</div>
+                                <div class="transport-desc">体育中心站 - 步行约5分钟</div>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <div class="transport-icon">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="transport-details">
+                                <div class="transport-title" data-i18n="intro.fromAirport">从机场到达</div>
+                                <div class="transport-desc">广州白云国际机场 → 地铁3号线 → 体育西路站</div>
+                                <div class="transport-desc">车程约60分钟，票价约¥8</div>
+                            </div>
+                        </div>
+                        <div class="transport-item">
+                            <div class="transport-icon">
+                                <i class="fas fa-train"></i>
+                            </div>
+                            <div class="transport-details">
+                                <div class="transport-title" data-i18n="intro.fromStation">从高铁站到达</div>
+                                <div class="transport-desc">广州南站 → 地铁2号线转3号线 → 体育西路站</div>
+                                <div class="transport-desc">车程约45分钟，票价约¥7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopping & Facilities -->
+                <div class="intro-section">
+                    <h4 class="intro-section-title" data-i18n="intro.shopping">周边配套</h4>
+                    <div class="facilities-grid">
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <div class="facility-info">
+                                <div class="facility-name">太古汇</div>
+                                <div class="facility-desc" data-i18n="intro.taiKooHui">大型高端购物中心，含奢侈品、餐饮、娱乐</div>
+                            </div>
+                        </div>
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="facility-info">
+                                <div class="facility-name">正佳广场</div>
+                                <div class="facility-desc" data-i18n="intro.zhengJia">亚洲顶级购物中心，体验式购物</div>
+                            </div>
+                        </div>
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="facility-info">
+                                <div class="facility-name">天河城百货</div>
+                                <div class="facility-desc" data-i18n="intro.teemMall">老牌购物地标，品类齐全</div>
+                            </div>
+                        </div>
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="facility-info">
+                                <div class="facility-name">万菱汇</div>
+                                <div class="facility-desc" data-i18n="intro.onPlaza">时尚购物中心，年轻潮流</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nearby Universities -->
+                <div class="intro-section">
+                    <h4 class="intro-section-title" data-i18n="intro.universities">邻近大学</h4>
+                    <div class="universities-list">
+                        <div class="university-item">华南师范大学 - 步行约15分钟</div>
+                        <div class="university-item">暨南大学 - 步行约20分钟</div>
+                        <div class="university-item">华南理工大学 - 步行约25分钟</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
