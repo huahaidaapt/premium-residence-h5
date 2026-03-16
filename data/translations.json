@@ -151,11 +151,16 @@
         "en": "Email",
         "th": "อีเมล"
       },
-      "address": {
-        "zh": "地址",
-        "en": "Address",
-        "th": "ที่อยู่"
-      },
+"address": {
+  "zh": "地址",
+  "en": "Address",
+  "th": "ที่อยู่"
+},
+"addressValue": {
+  "zh": "广州市天河区龙口东横街28号华海达公寓",
+  "en": "Huahaida Apartment, No. 28 Longkou East Street, Tianhe District, Guangzhou",
+  "th": "หอพักฮวาไห่ตา, เลขที่ 28 ถนนหลงโขวตะวันออก, เขตเทียนเหอ, กวางโจว"
+},
       "transportation": {
         "zh": "交通指南",
         "en": "Transportation Guide",
