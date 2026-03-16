@@ -246,6 +246,26 @@
         "en": "Fashionable shopping center, young and trendy",
         "th": "ห้างสรรพสินค้าแฟชั่น เยาวชนและเทรนด์"
       },
+      "taiKooHuiName": {
+        "zh": "太古汇",
+        "en": "TaiKoo Hui",
+        "th": "TaiKoo Hui"
+      },
+      "zhengJiaName": {
+        "zh": "正佳广场",
+        "en": "Zhengjia Plaza",
+        "th": "Zhengjia Plaza"
+      },
+      "teemMallName": {
+        "zh": "天河城百货",
+        "en": "Teem Mall",
+        "th": "Teem Mall"
+      },
+      "onPlazaName": {
+        "zh": "万菱汇",
+        "en": "On Plaza",
+        "th": "On Plaza"
+      },
       "universities": {
         "zh": "邻近大学",
         "en": "Nearby Universities",
