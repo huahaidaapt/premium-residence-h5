@@ -405,9 +405,66 @@ function copyWeChatIdFallback(wechatId, copiedText) {
     document.body.removeChild(textarea);
 }
 
+// 打开公寓介绍模态框 / Open Apartment Introduction Modal / เปิดโมดัลแนะนำอพาร์ตเมนต์
+function openIntroModal() {
+    const introModal = document.getElementById('introModal');
+    if (introModal) {
+        introModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// 关闭公寓介绍模态框 / Close Apartment Introduction Modal / ปิดโมดัลแนะนำอพาร์ตเมนต์
+function closeIntroModal() {
+    const introModal = document.getElementById('introModal');
+    if (introModal) {
+        introModal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+// 初始化模态框事件监听器 / Initialize Modal Event Listeners / เริ่มต้นตัวฟังเหตุการณ์โมดัล
+function initModalListeners() {
+    // Close Detail Modal
+    const closeModalBtn = document.getElementById('closeModal');
+    const detailModal = document.getElementById('detailModal');
+
+    if (closeModalBtn && detailModal) {
+        closeModalBtn.addEventListener('click', () => {
+            detailModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close Introduction Modal
+    const closeIntroModalBtn = document.getElementById('closeIntroModal');
+    const introModal = document.getElementById('introModal');
+
+    if (closeIntroModalBtn && introModal) {
+        closeIntroModalBtn.addEventListener('click', closeIntroModal);
+    }
+
+    // Close modals on backdrop click
+    [detailModal, introModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+}
+
 // 页面可见性变化时重新加载 / Reload on visibility change / โหลดใหม่เมื่อการมองเห็นหน้าเปลี่ยน
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && apartmentsData.length === 0) {
         loadData();
     }
+});
+
+// 初始化模态框事件监听 / Initialize modal event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    initModalListeners();
 });
