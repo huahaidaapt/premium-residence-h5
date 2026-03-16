@@ -186,6 +186,36 @@
         "en": "From High-Speed Railway",
         "th": "จากสถานีรถไฟความเร็วสูง"
       },
+      "metroDesc1": {
+        "zh": "岗顶站 A出口 (3号线) - 步行约6分钟",
+        "en": "Gangding Station Exit A (Line 3) - About 6 min walk",
+        "th": "สถานี Gangding ทางออก A (สาย 3) - เดินประมาณ 6 นาที"
+      },
+      "brtDesc1": {
+        "zh": "岗顶站 - 步行约7分钟",
+        "en": "Gangding Station - About 7 min walk",
+        "th": "สถานี Gangding - เดินประมาณ 7 นาที"
+      },
+      "airportDesc1": {
+        "zh": "广州白云国际机场 → 地铁3号线 → 岗顶站",
+        "en": "Guangzhou Baiyun International Airport → Metro Line 3 → Gangding Station",
+        "th": "ท่าอากาศยานนานาชาติไกวโจวไป๋ยุน → รถไฟใต้ดินสาย 3 → สถานี Gangding"
+      },
+      "airportDesc2": {
+        "zh": "车程约60分钟",
+        "en": "About 60 minutes by metro",
+        "th": "ประมาณ 60 นาทีโดยรถไฟใต้ดิน"
+      },
+      "stationDesc1": {
+        "zh": "广州南站 → 地铁2号线转3号线 → 岗顶站",
+        "en": "Guangzhou South Station → Metro Line 2 to Line 3 → Gangding Station",
+        "th": "สถานีใต้ไกวโจว → รถไฟใต้ดินสาย 2 ต่อสาย 3 → สถานี Gangding"
+      }, 
+            "stationDesc2": {
+        "zh": "车程约45分钟",
+        "en": "About 45 minutes by metro",
+        "th": "ประมาณ 45 นาทีโดยรถไฟใต้ดิน"
+      },
       "viewMap": {
         "zh": "查看地图",
         "en": "View Map",
