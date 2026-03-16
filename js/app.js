@@ -366,6 +366,45 @@ function showError(message) {
     `;
 }
 
+
+// 复制微信号到剪贴板 / Copy WeChat ID to Clipboard / คัดลอกไอดีวีแชทไปยังคลิปบอร์ด
+function copyWeChatId() {
+    const wechatId = CONTACT_INFO.wechat;
+    const copiedText = getTranslation('contact.wechatCopied') || 'WeChat ID copied';
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(wechatId).then(() => {
+            alert(`${copiedText}: ${wechatId}`);
+        }).catch(err => {
+            console.error('Failed to copy WeChat ID:', err);
+            // Fallback method
+            copyWeChatIdFallback(wechatId, copiedText);
+        });
+    } else {
+        copyWeChatIdFallback(wechatId, copiedText);
+    }
+}
+
+// 复制微信号备用方法 / Copy WeChat ID Fallback Method / วิธีสำรองคัดลอกไอดีวีแชท
+function copyWeChatIdFallback(wechatId, copiedText) {
+    const textarea = document.createElement('textarea');
+    textarea.value = wechatId;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        alert(`${copiedText}: ${wechatId}`);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        alert(`${wechatId}`);
+    }
+
+    document.body.removeChild(textarea);
+}
+
 // 页面可见性变化时重新加载 / Reload on visibility change / โหลดใหม่เมื่อการมองเห็นหน้าเปลี่ยน
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && apartmentsData.length === 0) {
