@@ -270,8 +270,22 @@
         "zh": "邻近大学",
         "en": "Nearby Universities",
         "th": "มหาวิทยาลัยใกล้เคียง"
-      }
     },
+    "university1": {
+        "zh": "华南师范大学 - 步行约15分钟",
+        "en": "South China Normal University - About 15 min walk",
+        "th": "มหาวิทยาลัยครูจีนใต้ - เดินประมาณ 15 นาที"
+      },
+      "university2": {
+        "zh": "暨南大学 - 步行约13分钟",
+        "en": "Jinan University - About 13 min walk",
+        "th": "มหาวิทยาลัยจินาน - เดินประมาณ 13 นาที"
+      },
+      "university3": {
+        "zh": "华南理工大学 - 步行约25分钟",
+        "en": "South China University of Technology - About 25 min walk",
+        "th": "มหาวิทยาลัยวิทยาศาสตร์และเทคโนโลยีจีนใต้ - เดินประมาณ 25 นาที"
+      },
     "types": {
       "studio": {
         "zh": "开间",
