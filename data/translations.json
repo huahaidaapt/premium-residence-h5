@@ -71,18 +71,9 @@
         "zh": "电话预约",
         "en": "Call to Book",
         "th": "โทรจอง"
-      },
-      "apartmentIntro": {
-    "zh": "公寓介绍",
-    "en": "Apartment Info",
-    "th": "ข้อมูลอพาร์ตเมนต์"
-  },
-"price": {
-  "zh": "租金",
-  "en": "Rent",
-  "th": "ค่าเช่า"
-},
-"modal": {
+      }
+    },
+    "modal": {
       "details": {
         "zh": "房源详情",
         "en": "Unit Details",
@@ -108,104 +99,12 @@
         "en": "Deposit Policy",
         "th": "เงินมัดจำ"
       },
-  "features": {
-    "zh": "房屋配置",
-    "en": "Features",
-    "th": "จุดเด่น"
-  }
-},
-"intro": {
-  "title": {
-    "zh": "公寓介绍",
-    "en": "Apartment Introduction",
-    "th": "แนะนำอพาร์ตเมนต์"
-  },
-  "contact": {
-    "zh": "联系方式",
-    "en": "Contact Information",
-    "th": "ข้อมูลการติดต่อ"
-  },
-  "phone": {
-    "zh": "电话",
-    "en": "Phone",
-    "th": "โทรศัพท์"
-  },
-  "wechat": {
-    "zh": "微信",
-    "en": "WeChat",
-    "th": "วีแชท"
-  },
-  "email": {
-    "zh": "邮箱",
-    "en": "Email",
-    "th": "อีเมล"
-  },
-  "address": {
-    "zh": "地址",
-    "en": "Address",
-    "th": "ที่อยู่"
-  },
-  "transportation": {
-    "zh": "交通指南",
-    "en": "Transportation Guide",
-    "th": "คำแนะนำการเดินทาง"
-  },
-  "metroStations": {
-    "zh": "临近地铁站",
-    "en": "Nearby Metro Stations",
-    "th": "สถานีรถไฟใต้ดินใกล้เคียง"
-  },
-  "brtStations": {
-    "zh": "BRT站",
-    "en": "BRT Stations",
-    "th": "สถานี BRT"
-  },
-  "fromAirport": {
-    "zh": "从机场到达",
-    "en": "From Airport",
-    "th": "จากสนามบิน"
-  },
-  "fromStation": {
-    "zh": "从高铁站到达",
-    "en": "From High-Speed Railway",
-    "th": "จากสถานีรถไฟความเร็วสูง"
-  },
-  "viewMap": {
-    "zh": "查看地图",
-    "en": "View Map",
-    "th": "ดูแผนที่"
-  },
-  "shopping": {
-    "zh": "周边配套",
-    "en": "Nearby Facilities",
-    "th": "สิ่งอำนวยความสะดวกใกล้เคียง"
-  },
-  "taiKooHui": {
-    "zh": "大型高端购物中心，含奢侈品、餐饮、娱乐",
-    "en": "Large high-end shopping mall with luxury goods, dining, and entertainment",
-    "th": "ห้างสรรพสินค้าหรูหราขนาดใหญ่ มีของหรูหรา ร้านอาหาร และความบันเทิง"
-  },
-  "zhengJia": {
-    "zh": "亚洲顶级购物中心，体验式购物",
-    "en": "Top shopping center in Asia, experiential shopping",
-    "th": "ห้างสรรพสินค้าระดับแนวหน้าของเอเชีย ช้อปปิ้งแบบประสบการณ์"
-  },
-  "teemMall": {
-    "zh": "老牌购物地标，品类齐全",
-    "en": "Classic shopping landmark with complete categories",
-    "th": "แลนด์มาร์กช้อปปิ้งคลาสสิก หมวดหมู่ครบถ้วน"
-  },
-  "onPlaza": {
-    "zh": "时尚购物中心，年轻潮流",
-    "en": "Fashionable shopping center, young and trendy",
-    "th": "ห้างสรรพสินค้าแฟชั่น เยาวชนและเทรนด์"
-  },
-  "universities": {
-    "zh": "邻近大学",
-    "en": "Nearby Universities",
-    "th": "มหาวิทยาลัยใกล้เคียง"
-  }
-}
+      "features": {
+        "zh": "房屋配置",
+        "en": "Features",
+        "th": "จุดเด่น"
+      }
+    },
     "types": {
       "studio": {
         "zh": "开间",
