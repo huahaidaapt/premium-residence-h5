@@ -14,6 +14,7 @@ let translationsData = {};
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     initEventListeners();
+    initModalListeners();  // ✅ 合并调用
 });
 
 // 加载数据 / Load Data / โหลดข้อมูล
@@ -337,7 +338,7 @@ function openModal(apartmentId) {
 // 关闭模态框 / Close Modal / ปิดโมดัล
 function closeModal() {
     const modal = document.getElementById('detailModal');
-    modal.classList.remove('active');
+    modal.classList.remove('active');  // ✅ 使用classList
     document.body.style.overflow = 'auto';
 }
 
@@ -409,7 +410,7 @@ function copyWeChatIdFallback(wechatId, copiedText) {
 function openIntroModal() {
     const introModal = document.getElementById('introModal');
     if (introModal) {
-        introModal.style.display = 'flex';
+        introModal.classList.add('active');  // ✅ 使用classList
         document.body.style.overflow = 'hidden';
     }
 }
@@ -418,8 +419,8 @@ function openIntroModal() {
 function closeIntroModal() {
     const introModal = document.getElementById('introModal');
     if (introModal) {
-        introModal.style.display = 'none';
-        document.body.style.overflow = '';
+        introModal.classList.remove('active');  // ✅ 使用classList
+        document.body.style.overflow = 'auto';
     }
 }
 
@@ -431,8 +432,8 @@ function initModalListeners() {
 
     if (closeModalBtn && detailModal) {
         closeModalBtn.addEventListener('click', () => {
-            detailModal.style.display = 'none';
-            document.body.style.overflow = '';
+            detailModal.classList.remove('active');  // ✅ 使用classList
+            document.body.style.overflow = 'auto';
         });
     }
 
@@ -449,8 +450,8 @@ function initModalListeners() {
         if (modal) {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
+                    modal.classList.remove('active');  // ✅ 使用classList
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
@@ -465,6 +466,4 @@ document.addEventListener('visibilitychange', () => {
 });
 
 // 初始化模态框事件监听 / Initialize modal event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    initModalListeners();
-});
+
