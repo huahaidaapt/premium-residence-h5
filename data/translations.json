@@ -71,6 +71,21 @@
         "zh": "电话预约",
         "en": "Call to Book",
         "th": "โทรจอง"
+      },
+      "price": {
+        "zh": "租金",
+        "en": "Rent",
+        "th": "ค่าเช่า"
+      },
+      "wechatCopied": {
+        "zh": "微信号已复制",
+        "en": "WeChat ID copied",
+        "th": "ไอดีวีแชทถูกคัดลอก"
+      },
+      "wechat": {
+        "zh": "huahaida888",
+        "en": "huahaida888",
+        "th": "huahaida888"
       }
     },
     "modal": {
