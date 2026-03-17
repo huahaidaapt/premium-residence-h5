@@ -34,6 +34,11 @@
         "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
         "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
       },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
       "images": [
         "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -73,6 +78,11 @@
         "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
         "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
       },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
       "images": [
         "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -112,6 +122,11 @@
         "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
         "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
       },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
       "images": [
         "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -151,6 +166,11 @@
         "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
         "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
       },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
       "images": [
         "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=80"
@@ -190,6 +210,11 @@
         "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
         "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
       },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
       "images": [
         "images/room-12-01.jpg",
         "images/room-12-02.jpg"
