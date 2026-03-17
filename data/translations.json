@@ -123,6 +123,11 @@
         "zh": "房屋配置",
         "en": "Features",
         "th": "จุดเด่น"
+         },
+        "appliances": {
+    "zh": "家电配置",
+    "en": "Appliances",
+    "th": "อุปกรณ์ครัว"
       }
     },
     "intro": {
