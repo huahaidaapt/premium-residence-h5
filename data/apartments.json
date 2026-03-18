@@ -145,11 +145,11 @@
         "th": "ห้อง 19"
       },
       "type": "studio",
-      "area": "30㎡",
+      "area": "31㎡",
       "floor": {
-        "zh": "12F 朝东",
-        "en": "12F East",
-        "th": "ชั้น 12 ทิศตะวันออก"
+        "zh": "10F 朝东",
+        "en": "10F East",
+        "th": "ชั้น 10 ทิศตะวันออก"
       },
       "floorInfo": {
         "zh": "此房型共有17层可选，价格根据楼层不同",
@@ -177,8 +177,10 @@
     "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
   },
       "images": [
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=80"
+        "images/room-19-01.jpg",
+        "images/room-19-02.jpg",
+        "images/room-19-03.jpg",
+        "images/room-19-04.jpg"
       ]
     },
     {
