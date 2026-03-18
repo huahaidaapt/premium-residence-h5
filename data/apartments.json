@@ -64,9 +64,9 @@
         "th": "มีห้องให้เลือก 17 ชั้น ราคาจะแตกต่างกันตามชั้น"
       },
       "price": {
-        "zh": "2650元/月",
-        "en": "2650 yuan/month",
-        "th": "2650 หยวน/เดือน"
+        "zh": "2700元/月",
+        "en": "2700 yuan/month",
+        "th": "2700 หยวน/เดือน"
       },
       "deposit": {
         "zh": "押二付一",
@@ -87,8 +87,7 @@
     "images/room-02-01.jpg",
     "images/room-02-02.jpg",
     "images/room-02-03.jpg",
-    "images/room-02-04.jpg",
-    "images/room-02-05.jpg"
+    "images/room-02-04.JPG",
   ]
 },
     {
