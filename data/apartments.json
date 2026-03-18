@@ -58,7 +58,31 @@
     "en": "12F North",
     "th": "ชั้น 12 ทิศเหนือ"
   },
-  ...
+ "floorInfo": {
+        "zh": "此房型共有17层可选，价格根据楼层不同",
+        "en": "17 floors available for this apartment type, price varies by floor",
+        "th": "มีห้องให้เลือก 17 ชั้น ราคาจะแตกต่างกันตามชั้น"
+      },
+      "price": {
+        "zh": "2650元/月",
+        "en": "2650 yuan/month",
+        "th": "2650 หยวน/เดือน"
+      },
+      "deposit": {
+        "zh": "押二付一",
+        "en": "2 months deposit + 1 month rent",
+        "th": "มัดจำ 2 เดือน + เช่าล่วงหน้า 1 เดือน"
+      },
+      "features": {
+        "zh": ["大开间", "带独立卫生间", "独立阳台", "精装修", "采光充足", "拎包即住"],
+        "en": ["Open-plan studio", "Private bathroom", "Private balcony", "Fully furnished", "Great natural light", "Move-in ready"],
+        "th": ["สตูดิโอแบบโอเพนพลาน", "ห้องน้ำส่วนตัว", "ระเบียงส่วนตัว", "ตกแต่งพร้อมอยู่", "แสงธรรมชาติดี", "พร้อมเข้าอยู่"]
+      },
+        "appliances": {
+    "zh": ["空调", "热水器", "洗衣机", "冰箱"],
+    "en": ["Air conditioner", "Water heater", "Washing machine", "Refrigerator"],
+    "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
+  },
   "images": [
     "images/room-02-01.jpg",
     "images/room-02-02.jpg",
