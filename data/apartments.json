@@ -1,18 +1,18 @@
 {
   "apartments": [
     {
-      "id": "22",
+      "id": "23",
       "displayName": {
-        "zh": "22号房",
-        "en": "Room 22",
-        "th": "ห้อง 22"
+        "zh": "23号房",
+        "en": "Room 23",
+        "th": "ห้อง 23"
       },
       "type": "studio",
-      "area": "24.62㎡",
+      "area": "24.18㎡",
       "floor": {
-        "zh": "6F 朝北",
-        "en": "6F North",
-        "th": "ชั้น 6 ทิศเหนือ"
+        "zh": "11F 朝北",
+        "en": "11F North",
+        "th": "ชั้น 11 ทิศเหนือ"
       },
       "floorInfo": {
         "zh": "此房型共有17层可选，价格根据楼层不同",
@@ -40,8 +40,7 @@
     "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
   },
       "images": [
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "images/room-23-01.jpg"
       ]
     },
    {
