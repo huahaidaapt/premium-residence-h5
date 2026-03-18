@@ -226,6 +226,11 @@
         "en": "View Map",
         "th": "ดูแผนที่"
       },
+      "openInNavigation": {
+  "zh": "打开导航",
+  "en": "Open Navigation",
+  "th": "เปิดการนำทาง"
+},
       "shopping": {
         "zh": "周边配套",
         "en": "Nearby Facilities",
