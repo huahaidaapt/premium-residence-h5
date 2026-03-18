@@ -92,18 +92,18 @@
   ]
 },
     {
-      "id": "05",
+      "id": "06",
       "displayName": {
-        "zh": "05号房",
-        "en": "Room 05",
-        "th": "ห้อง 05"
+        "zh": "06号房",
+        "en": "Room 06",
+        "th": "ห้อง 06"
       },
       "type": "studio",
-      "area": "28.2㎡",
+      "area": "28.64㎡",
       "floor": {
-        "zh": "10F 朝西",
-        "en": "10F West",
-        "th": "ชั้น 10 ทิศตะวันตก"
+        "zh": "12F 朝西",
+        "en": "12F West",
+        "th": "ชั้น 12 ทิศตะวันตก"
       },
       "floorInfo": {
         "zh": "此房型共有17层可选，价格根据楼层不同",
@@ -131,8 +131,10 @@
     "th": ["เครื่องปรับอากาศ", "เครื่องทำน้ำร้อน", "เครื่องซักผ้า", "ตู้เย็น"]
   },
       "images": [
-        "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        "images/room-06-01.jpg",
+        "images/room-06-02.jpg",
+        "images/room-06-03.jpg",
+        "images/room-06-04.jpg"
       ]
     },
     {
