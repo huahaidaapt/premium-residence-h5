@@ -136,7 +136,7 @@ body {
     background: url('../images/hero-background.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 .hero-overlay {
@@ -169,6 +169,7 @@ body {
     margin-bottom: var(--spacing-lg);
     color: var(--color-gold);
     text-transform: uppercase;
+   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hero-subtitle {
@@ -178,6 +179,7 @@ body {
     margin-bottom: var(--spacing-xl);
     opacity: 0.9;
     max-width: 600px;
+   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .hero-features {
@@ -187,6 +189,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-gold-light);
+   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); 
 }
 
 /* Filter Section */
